@@ -28,11 +28,11 @@ vessel.control.activate_next_stage()
 
 engine_separated = False
 while True:
-    if (altitude() >= turn_start_altitude and altitude() < turn_end_altitude):
+    if altitude() >= turn_start_altitude and altitude() < turn_end_altitude:
         turn = (altitude() - turn_start_altitude)/(turn_end_altitude - turn_start_altitude)
         angle = 90 * turn
         ap.target_pitch_and_heading(90 + angle, 90 + angle)
-    if (srb_fuel() < 0.01 and engine_separated == False):
+    if srb_fuel() < 0.01 and engine_separated == False:
         vessel.control.activate_next_stage()
         engine_separated = True
     if vessel.flight(vessel.orbit.body.reference_frame).vertical_speed < -0.01:

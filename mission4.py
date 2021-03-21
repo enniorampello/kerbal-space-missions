@@ -35,13 +35,13 @@ boosters_separated = False
 in_orbit = False
 angle = 0.0
 while True:
-    if (altitude() >= turn_start_altitude and altitude() < turn_end_altitude):
+    if altitude() >= turn_start_altitude and altitude() < turn_end_altitude:
         turn = (altitude() - turn_start_altitude)/(turn_end_altitude - turn_start_altitude)
         new_angle = 90.0 * turn
         if abs(new_angle - angle) > 0.5:
             angle = new_angle
             print(f'Turning to\t{90 - angle} degrees.')
-            ap.target_pitch_and_heading(90 - angle, 90)
+            ap.target_pitch_and_heading(90 + angle, 90)
     if srb_fuel() < 0.01 and boosters_separated == False:
         print('Separating boosters...')
         vessel.control.activate_next_stage()
@@ -80,4 +80,3 @@ while True:
         ap.target_pitch_and_heading(90, 90)
         vessel.control.activate_next_stage()
         break
-    
