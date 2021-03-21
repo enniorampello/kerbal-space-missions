@@ -1,0 +1,4 @@
+1. initialise all the parameters for the launch
+2. reach the minimum altitude to start turning
+3. turn until the fuel of the main engine is finished
+4. while turning detach the boosters when they run out of fuel
