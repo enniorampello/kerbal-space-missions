@@ -54,13 +54,13 @@ while True:
     if engine_fuel() < 0.01:
         print('Separating engine...')
         vessel.control.activate_next_stage()
-    if abs(altitude() - apoapsis_altitude()) < 10000 and in_orbit:
+    if abs(altitude() - apoapsis_altitude()) < 1000 and in_orbit:
         print('Rising apoapsis...')
-        #ap.target_direction = prograde_direction()
-        vessel.control.throttle = 1.0
+        ap.target_direction = prograde_direction()
         ap.wait()
-        while apoapsis_altitude() < 150000:
-            #ap.target_direction = prograde_direction()
+        vessel.control.throttle = 1.0
+        while apoapsis_altitude() < 110000:
+            ap.target_direction = prograde_direction()
             print(f'Apoapsis altitude: {apoapsis_altitude()} m')
             time.sleep(1)
         vessel.control.throttle = 0.0
@@ -69,6 +69,7 @@ while True:
     if abs(altitude() - apoapsis_altitude()) < 10000:
         ap.target_direction = retrograde_direction()
         ap.wait()
+        time.sleep(5)
         vessel.control.throttle = 1.0
         while periapsis_altitude() > 25000:
             ap.target_direction = retrograde_direction()
