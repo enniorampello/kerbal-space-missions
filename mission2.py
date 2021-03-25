@@ -14,7 +14,9 @@ srb_fuel = conn.add_stream(vessel.resources.amount, 'SolidFuel')
 vessel.control.sas = True
 vessel.control.throttle = 1.0
 
-print('Launch in:\n3')
+print('Launch in:')
+time.sleep(1)
+print('3')
 time.sleep(1)
 print('2')
 time.sleep(1)
